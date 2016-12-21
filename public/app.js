@@ -32,3 +32,17 @@ function cart_get_number_of_items() {
 
     return cnt;
 }
+
+function app_get_orders() {
+    var orders = 0;
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = window.localStorage.key(i);           // получаем ключ
+        var value = window.localStorage.getItem(key);   // получаем значение
+
+        if (key.indexOf('product_') == 0) {
+            orders += key + '=' + value + ',';
+        }
+    }
+
+    return orders;
+}
